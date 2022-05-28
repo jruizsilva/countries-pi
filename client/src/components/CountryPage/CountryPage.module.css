@@ -1,0 +1,48 @@
+.contenedor {
+  margin: 48px;
+}
+.title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 32px;
+  color: white;
+  font-weight: lighter;
+  font-size: 32px;
+}
+
+.p {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+  margin: 5px 0;
+  font-weight: lighter;
+}
+.img {
+  margin-bottom: 5px;
+}
+.card {
+  background-color: rgba(68, 68, 68, 0.9);
+  border: 2px solid white;
+  padding: 24px;
+  border-radius: 5px;
+  flex-basis: 220px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 48px;
+}
+.actividades {
+  max-width: 768px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.not_found {
+  color: white;
+  font-size: larger;
+}

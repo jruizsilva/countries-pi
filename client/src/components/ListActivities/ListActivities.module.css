@@ -1,0 +1,16 @@
+.title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 32px;
+  color: white;
+  font-weight: lighter;
+  font-size: 32px;
+}
+.actividades {
+  max-width: 768px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}

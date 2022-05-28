@@ -1,0 +1,13 @@
+.countries {
+  max-width: 692px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.not_found {
+  color: white;
+  font-size: larger;
+}

@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+img {
+  max-width: 100%;
+}
+
+:root {
+  --fondo: #555;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--fondo);
+  background-image: url("./assets/countries.png");
+  min-height: 100vh;
+  background-position: center center;
+  background-size: cover;
+}
+.material-symbols-outlined {
+  color: #c74b50;
+}
