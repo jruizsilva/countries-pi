@@ -1,9 +1,9 @@
 export const validate = (formValues) => {
-  const { name, difficult, duration, season } = formValues;
+  const { name, difficulty, duration, season } = formValues;
   const nameResult = validateName(name);
   if (!nameResult.success) return nameResult;
 
-  const difficultyResult = validateDifficulty(difficult);
+  const difficultyResult = validateDifficulty(difficulty);
   if (!difficultyResult.success) return difficultyResult;
 
   const durationResult = validateDuration(duration);

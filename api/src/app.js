@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 const countriesRouter = require("./routes/countries.routes");
 const activityRouter = require("./routes/activity.routes");
 
@@ -11,6 +12,7 @@ const server = express();
 
 server.name = "API";
 
+server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
@@ -18,7 +20,9 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
   const allowedDomains = [
     "http://localhost:3000",
+    "http://localhost:3001",
     "https://countries-pi.netlify.app",
+    "https://api-countries-pi.vercel.app",
   ];
   const origin = req.headers.origin;
   if (allowedDomains.indexOf(origin) > -1) {

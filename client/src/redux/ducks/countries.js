@@ -71,6 +71,7 @@ const countriesReducer = (state = initialState, action) => {
       return { ...state, country: action.payload };
     case GET_ACTIVITIES_BY_COUNTRY:
       return { ...state, countryActivities: action.payload };
+
     default: {
       return state;
     }
@@ -84,9 +85,6 @@ export const fetchAllCountries = (formValues = initialForm, page) => {
 
     if (!page) dispatch(resetPage());
 
-    const instance = axios.create({
-      baseURL: "https://api-restcountries.herokuapp.com",
-    });
     let URL;
     if (!continent && !tourist_activity && !sort.alphabet && !sort.population) {
       if (page > 0) {
@@ -159,12 +157,12 @@ export const fetchAllCountries = (formValues = initialForm, page) => {
     }
 
     try {
-      const res = await instance.get(URL);
+      const res = await axios.get(URL);
       dispatch({ type: FETCH_ALL_COUNTRIES_SUCCESS, payload: res.data });
     } catch (error) {
-      console.log(error);
-      console.log(error.message);
-      dispatch({ type: FETCH_ALL_COUNTRIES_REQUEST, payload: error.message });
+      // console.log(error);
+      // console.log(error.message);
+      dispatch({ type: FETCH_ALL_COUNTRIES_FAILURE, payload: error.message });
     }
   };
 };
@@ -178,7 +176,7 @@ export const fetchCountryByName = (countryName) => {
       const res = await axios.get(URL);
       dispatch({ type: FETCH_COUNTRY_BY_NAME_SUCCESS, payload: res.data });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       dispatch({ type: FETCH_COUNTRY_BY_NAME_FAILURE, payload: error.message });
     }
   };
@@ -186,31 +184,15 @@ export const fetchCountryByName = (countryName) => {
 
 export const getCountryById = (id) => {
   return async (dispatch) => {
-    const instance = axios.create({
-      baseURL: "https://api-restcountries.herokuapp.com",
-    });
-    const res = await instance.get(`/countries/${id}`);
+    const res = await axios.get(`/countries/${id}`);
     dispatch({ type: GET_COUNTRY_BY_ID, payload: res.data });
   };
 };
 
 export const getActivitiesByCountry = (countryId) => {
   return async (dispatch) => {
-    const instance = axios.create({
-      baseURL: "https://api-restcountries.herokuapp.com",
-    });
-    const res = await instance.get(`/countries/${countryId}/activities`);
+    const res = await axios.get(`/countries/${countryId}/activities`);
     dispatch({ type: GET_ACTIVITIES_BY_COUNTRY, payload: res.data });
-  };
-};
-
-export const fetchPaisesSuperPoblados = () => {
-  return async (dispatch) => {
-    const instance = axios.create({
-      baseURL: "https://api-restcountries.herokuapp.com",
-    });
-    // const res = await instance.get(`/countries/${countryId}/activities`);
-    // dispatch({ type: FETCH_PAISES_SUPERPOBLADOS, payload: res.data });
   };
 };
 

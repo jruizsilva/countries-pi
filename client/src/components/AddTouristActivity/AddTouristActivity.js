@@ -1,47 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { validate } from "../../helpers/validate";
-import {
-  addTouristActivity,
-  resetForm,
-  setForm,
-} from "../../redux/ducks/tourist_activity";
+import { addTouristActivity } from "../../redux/ducks/tourist_activity";
 import Message from "../Message/Message";
+
 const style = require("./AddTouristActivity.module.css");
 
+const initialForm = {
+  name: "",
+  difficulty: "",
+  duration: "",
+  season: "",
+};
+
 const AddTouristActivity = () => {
-  const { initialForm } = useSelector((state) => state.activities);
   const dispatch = useDispatch();
-  const [formValues, setFormValues] = useState(initialForm);
+  const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
 
-  const handleFormValues = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  const handleForm = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { success, msg } = validate(formValues);
+    const { success, msg } = validate(form);
     if (success) {
-      setError("");
       // Add activity
-      dispatch(setForm(formValues));
-      dispatch(addTouristActivity(formValues));
-      setFormValues(initialForm);
+      dispatch(addTouristActivity(form));
+      setForm(initialForm);
     } else {
       setError(msg);
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
-    setTimeout(() => {
-      setError("");
-    }, 3000);
   };
-
-  useEffect(() => {
-    const { name, difficulty, duration, season } = formValues;
-    if (!name && !difficulty && !duration && !season) {
-      dispatch(resetForm());
-    }
-  }, [formValues, dispatch]);
 
   return (
     <>
@@ -57,8 +51,8 @@ const AddTouristActivity = () => {
               type="text"
               name="name"
               id="name"
-              onChange={handleFormValues}
-              value={formValues.name}
+              onChange={handleForm}
+              value={form.name}
               className={style.input}
               autoComplete="off"
             />
@@ -70,8 +64,8 @@ const AddTouristActivity = () => {
             <select
               name="difficulty"
               id="difficulty"
-              onChange={handleFormValues}
-              value={formValues.difficulty}
+              onChange={handleForm}
+              value={form.difficulty}
               className={style.select}
             >
               <option value="">Seleccione una dificultad</option>
@@ -89,16 +83,16 @@ const AddTouristActivity = () => {
             <select
               name="duration"
               id="duration"
-              onChange={handleFormValues}
-              value={formValues.duration}
+              onChange={handleForm}
+              value={form.duration}
               className={style.select}
             >
               <option value="">Seleccione la duracion</option>
               <option value="1 hora">1 hora</option>
-              <option value="2 hora">2 hora</option>
-              <option value="3 hora">3 hora</option>
-              <option value="4 hora">4 hora</option>
-              <option value="5 hora">5 hora</option>
+              <option value="2 horas">2 hora</option>
+              <option value="3 horas">3 hora</option>
+              <option value="4 horas">4 hora</option>
+              <option value="5 horas">5 hora</option>
             </select>
           </div>
           <div className={style.box}>
@@ -108,8 +102,8 @@ const AddTouristActivity = () => {
             <select
               name="season"
               id="season"
-              onChange={handleFormValues}
-              value={formValues.season}
+              onChange={handleForm}
+              value={form.season}
               className={style.select}
             >
               <option value="">Seleccione la temporada</option>

@@ -1,7 +1,5 @@
 import axios from "axios";
 const ADD_TOURIST_ACTIVITY = "tourist_activity/ADD_TOURIST_ACTIVITY";
-const RESET_FORM = "tourist_activity/RESET_FORM";
-const SET_FORM = "tourist_activity/SET_FORM";
 const GET_ALL_TOURIST_ACTIVITIES =
   "tourist_activity/GET_ALL_TOURIST_ACTIVITIES";
 const GET_ACTIVITY_BY_ID = "tourist_activity/GET_ACTIVITY_BY_ID";
@@ -10,19 +8,11 @@ const MODE_ADD_COUNTRIES_TO_ACTIVITY =
 const ADD_COUNTRY_TO_ACTIVITY = "tourist_activity/ADD_COUNTRY_TO_ACTIVITY";
 const SET_SUCCESS = "tourist_activity/SET_SUCCESS";
 const RESET_SUCCESS = "tourist_activity/RESET_SUCCESS";
+
 const GET_COUNTRIES_BY_ACTIVITY = "tourist_activity/GET_COUNTRIES_BY_ACTIVITY";
 const DELETE_ACTIVITY_BY_ID = "tourist_activity/DELETE_ACTIVITY_BY_ID";
 
-const initialForm = {
-  name: "",
-  difficulty: "",
-  duration: "",
-  season: "",
-};
-
 const initialState = {
-  initialForm,
-  form: initialForm,
   activities: [],
   activity: {},
   activityCountries: [],
@@ -60,11 +50,10 @@ export const addTouristActivity = (body) => {
     try {
       // body.difficulty = parseInt(body.difficulty);
       console.log(body);
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
-      });
-      await instance.post("/activity", body);
+
+      await axios.post("/activity", body);
       dispatch({ type: ADD_TOURIST_ACTIVITY });
+      setSuccess("Actividad agregada correctamente");
       dispatch(getAllTouristActivities());
     } catch (error) {
       console.log(error);
@@ -75,13 +64,10 @@ export const addTouristActivity = (body) => {
 export const getAllTouristActivities = () => {
   return async (dispatch) => {
     try {
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
-      });
-      const res = await instance.get("/activity");
+      const res = await axios.get("/activity");
       dispatch({ type: GET_ALL_TOURIST_ACTIVITIES, payload: res.data });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 };
@@ -89,10 +75,7 @@ export const getAllTouristActivities = () => {
 export const getActivityById = (id) => {
   return async (dispatch) => {
     try {
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
-      });
-      const res = await instance.get(`/activity/${id}`);
+      const res = await axios.get(`/activity/${id}`);
       dispatch({ type: GET_ACTIVITY_BY_ID, payload: res.data });
     } catch (error) {
       console.log(error);
@@ -107,22 +90,14 @@ export const modeAddCountriesToActivity = (id) => {
   };
 };
 
-export const resetForm = () => {
-  return { type: RESET_FORM };
-};
-export const setForm = (formValues) => {
-  return { type: SET_FORM, payload: formValues };
-};
-
 export const addCountryToActivity = (countryId, activityId) => {
   return async (dispatch) => {
     try {
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
+      await axios.put(`/activity/${activityId}/countries`, {
+        countryId,
       });
-      await instance.put(`/activity/${activityId}/countries`, { countryId });
       dispatch({ type: ADD_COUNTRY_TO_ACTIVITY });
-      dispatch({ type: SET_SUCCESS, payload: "Agregado correctamente" });
+      setSuccess("Pais agregado correctamente");
       dispatch(getCountriesByActivity(activityId));
     } catch (error) {
       console.log(error);
@@ -133,10 +108,7 @@ export const addCountryToActivity = (countryId, activityId) => {
 export const getCountriesByActivity = (activityId) => {
   return async (dispatch) => {
     try {
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
-      });
-      const res = await instance.get(`/activity/${activityId}/countries`);
+      const res = await axios.get(`/activity/${activityId}/countries`);
       dispatch({ type: GET_COUNTRIES_BY_ACTIVITY, payload: res.data });
     } catch (error) {
       console.log(error);
@@ -147,16 +119,20 @@ export const getCountriesByActivity = (activityId) => {
 export const deleteActivityById = (activityId) => {
   return async (dispatch) => {
     try {
-      const instance = axios.create({
-        baseURL: "https://api-restcountries.herokuapp.com",
-      });
-      const res = await instance.delete(`/activity/${activityId}`);
+      const res = await axios.delete(`/activity/${activityId}`);
       console.log(res);
       dispatch({ type: DELETE_ACTIVITY_BY_ID });
       dispatch(getAllTouristActivities());
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const setSuccess = (msg) => {
+  return async (dispatch) => {
+    dispatch({ type: RESET_SUCCESS, payload: msg });
+    setTimeout(resetSuccess(), 3000);
   };
 };
 
