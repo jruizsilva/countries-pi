@@ -20,9 +20,7 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
   const allowedDomains = [
     "http://localhost:3000",
-    "http://localhost:3001",
-    "https://countries-pi.netlify.app",
-    "https://api-countries-pi.vercel.app",
+    "https://countries-pi-kappa.vercel.app/",
   ];
   const origin = req.headers.origin;
   if (allowedDomains.indexOf(origin) > -1) {
