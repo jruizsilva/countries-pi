@@ -20,7 +20,7 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
   const allowedDomains = [
     "http://localhost:3000",
-    "https://countries-pi-kappa.vercel.app/",
+    "https://countries-pi-jruizsilva.vercel.app",
   ];
   const origin = req.headers.origin;
   if (allowedDomains.indexOf(origin) > -1) {
