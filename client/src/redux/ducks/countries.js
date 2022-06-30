@@ -168,7 +168,7 @@ export const fetchAllCountries = (formValues = initialForm, page) => {
 };
 
 export const fetchCountryByName = (countryName) => {
-  const URL = `https://api-restcountries.herokuapp.com/countries?name=${countryName}`;
+  const URL = `/countries?name=${countryName}`;
   return async (dispatch) => {
     dispatch({ type: FETCH_COUNTRY_BY_NAME_REQUEST });
     dispatch(resetForm(initialForm, true));

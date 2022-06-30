@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { validate } from "../../helpers/validate";
 import { addTouristActivity } from "../../redux/ducks/tourist_activity";
 import Message from "../Message/Message";
@@ -15,6 +15,7 @@ const initialForm = {
 
 const AddTouristActivity = () => {
   const dispatch = useDispatch();
+  const { success } = useSelector((state) => state.activities);
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
 
@@ -117,6 +118,7 @@ const AddTouristActivity = () => {
         </form>
       </div>
       {error && <Message success={false} msg={error} />}
+      {success && <Message success={true} msg={success} />}
     </>
   );
 };

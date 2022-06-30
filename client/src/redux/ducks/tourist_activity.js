@@ -53,7 +53,8 @@ export const addTouristActivity = (body) => {
 
       await axios.post("/activity", body);
       dispatch({ type: ADD_TOURIST_ACTIVITY });
-      setSuccess("Actividad agregada correctamente");
+      dispatch(setSuccess("Actividad agregada correctamente"));
+      setTimeout(() => dispatch(resetSuccess()), 3000);
       dispatch(getAllTouristActivities());
     } catch (error) {
       console.log(error);
@@ -97,7 +98,8 @@ export const addCountryToActivity = (countryId, activityId) => {
         countryId,
       });
       dispatch({ type: ADD_COUNTRY_TO_ACTIVITY });
-      setSuccess("Pais agregado correctamente");
+      dispatch(setSuccess("Pais agregado correctamente"));
+      setTimeout(() => dispatch(resetSuccess()), 3000);
       dispatch(getCountriesByActivity(activityId));
     } catch (error) {
       console.log(error);
@@ -123,6 +125,8 @@ export const deleteActivityById = (activityId) => {
       console.log(res);
       dispatch({ type: DELETE_ACTIVITY_BY_ID });
       dispatch(getAllTouristActivities());
+      dispatch(setSuccess("Eliminado correctamente"));
+      setTimeout(() => dispatch(resetSuccess()), 3000);
     } catch (error) {
       console.log(error);
     }
@@ -130,10 +134,7 @@ export const deleteActivityById = (activityId) => {
 };
 
 export const setSuccess = (msg) => {
-  return async (dispatch) => {
-    dispatch({ type: RESET_SUCCESS, payload: msg });
-    setTimeout(resetSuccess(), 3000);
-  };
+  return { type: SET_SUCCESS, payload: msg };
 };
 
 export const resetSuccess = () => {
