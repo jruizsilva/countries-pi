@@ -15,7 +15,8 @@
 
 ## Features
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp) was to build an application to complete the given user stories.
+Esta aplicación nos permite buscar un país en a través de un buscador, obtener solo los países de un región determinada, ordenarlos según la cantidad de habitantes y por orden alfabético.
+Además vamos a poder asociar a un país con una actividad turística en concreto y listar los países que realicen cierta actividad turística.
 
 ## How To Use
 
@@ -24,7 +25,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 $ git clone https://github.com/jruizsilva/countries-pi
 
 # Install dependencies
-$ npm install --save styled-components
+$ npm install
 
 # Run the app
 $ npm start
