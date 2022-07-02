@@ -7,11 +7,11 @@
 ### Built With
 
 - [React](https://reactjs.org/)
-- [Redux](https://reactjs.org/)
-- [Node](https://reactjs.org/)
-- [Express](https://reactjs.org/)
-- [PostgreSQL](https://reactjs.org/)
-- [Sequelize](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Node](https://nodejs.org/es/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Sequelize](https://sequelize.org/)
 
 ## Features
 
@@ -24,7 +24,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 $ git clone https://github.com/jruizsilva/input-component-devchallenges.io
 
 # Install dependencies
-$ npm install --save styled-components
+$ npm install
 
 # Run the app
 $ npm start
@@ -34,5 +34,4 @@ $ npm start
 
 - Website [jruizsilva.netlify.app](https://jruizsilva.netlify.app/)
 - GitHub [@jruizsilva](https://github.com/jruizsilva)
-- Twitter [@JnT077](https://twitter.com/JnT077)
 - Linkedin [@jruizsilva](https://www.linkedin.com/in/jruizsilva/)
