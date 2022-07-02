@@ -3,7 +3,7 @@
 ## _Overview_
 
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to view!</summary>
   <img src="countries.gif">
 </details>
 
