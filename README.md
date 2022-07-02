@@ -1,28 +1,17 @@
-<h1 align="center">Input Component</h1>
-
-<div align="center">
-   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-</div>
-
-<div align="center">
-  <h3>
-    <a href="https://dev-challenges-react-2.netlify.app/">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp">
-      Challenge
-    </a>
-  </h3>
-</div>
+<h1 align="center">Countries App</h1>
 
 ## Overview
 
-![screenshot](https://i.ibb.co/jRDDCDR/Input-Component.png)
+![screenshot](https://i.ibb.co/WBJBYr0/Countries-App.png)
 
 ### Built With
 
 - [React](https://reactjs.org/)
+- [Redux](https://reactjs.org/)
+- [Node](https://reactjs.org/)
+- [Express](https://reactjs.org/)
+- [PostgreSQL](https://reactjs.org/)
+- [Sequelize](https://reactjs.org/)
 
 ## Features
 
