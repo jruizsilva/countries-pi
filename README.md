@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://countries-pi-jruizsilva.vercel.app">Countries App</a></h1>
+<h1 align="center"><i><a href="https://countries-pi-jruizsilva.vercel.app">Countries App</a></i></h1>
 
 ## _Overview_
 
