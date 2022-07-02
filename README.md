@@ -4,7 +4,7 @@
 
 ![screenshot](https://i.ibb.co/WBJBYr0/Countries-App.png)
 
-### Built With
+## Built With
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
