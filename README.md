@@ -1,10 +1,13 @@
 <h1 align="center"><a href="https://countries-pi-jruizsilva.vercel.app">Countries App</a></h1>
 
-## Overview
+## _Overview_
 
-<a href="https://countries-pi-jruizsilva.vercel.app">![screenshot](https://i.ibb.co/WBJBYr0/Countries-App.png)</a>
+<details>
+  <summary>Click to expand!</summary>
+  <img src="countries.gif">
+</details>
 
-## Built With
+## _Built With_
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
@@ -13,13 +16,14 @@
 - [PostgreSQL](https://www.postgresql.org/)
 - [Sequelize](https://sequelize.org/)
 
-## Description
+## _Description_
+
 Proyecto individual del bootcamp de soyhenry
 
 Esta aplicación nos permite buscar un país a través de un buscador, obtener solo los países de un región determinada, ordenarlos según la cantidad de habitantes y por orden alfabético.
 Además vamos a poder asociar a un país con una actividad turística en concreto y listar los países que realicen cierta actividad turística.
 
-## How To Use
+## _How To Use_
 
 ```bash
 # Clone this repository
@@ -32,7 +36,7 @@ $ npm install
 $ npm start
 ```
 
-## Contact
+## _Contact_
 
 - Website [jruizsilva.netlify.app](https://jruizsilva.netlify.app/)
 - GitHub [@jruizsilva](https://github.com/jruizsilva)
